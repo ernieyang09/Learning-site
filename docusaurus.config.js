@@ -81,6 +81,12 @@ const config = {
             position: 'left',
             label: 'Leetcode',
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'feSidebar',
+            position: 'left',
+            label: 'FE',
+          },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/ernieyang09/interview2',
