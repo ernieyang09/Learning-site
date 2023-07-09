@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # What happens when you type a URL into your browser?
 
 URL is composed of 4 parts:

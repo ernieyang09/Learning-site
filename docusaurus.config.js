@@ -59,6 +59,18 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        // gtag: {
+        //   trackingID: 'G-JW93XB3XXZ',
+        // },
+        googleTagManager: {
+          containerId: 'GTM-5N2FB3B',
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          // ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+        },
       }),
     ],
   ],
