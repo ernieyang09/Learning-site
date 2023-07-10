@@ -1,9 +1,9 @@
-position: 99 # float position is supported
-label: 'Misc'
+position: 3 # float position is supported
+label: 'Tree'
 collapsible: true # make the category collapsible
 collapsed: true # keep the category open by default
 link:
   type: generated-index
-  title: Misc
+  title: Tree
 customProps:
   description: This description can be used in the swizzled DocCard

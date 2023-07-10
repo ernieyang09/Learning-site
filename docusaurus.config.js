@@ -111,11 +111,15 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Doc',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Leetcode',
+                to: '/docs/leetcode/binary-search',
+              },
+              {
+                label: 'FE',
+                to: '/docs/fe/browser/browser-type-url',
               },
             ],
           },
