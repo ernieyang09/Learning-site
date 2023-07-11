@@ -1,0 +1,6 @@
+position: 1.5 # float position is supported
+label: 'BFS & DFS'
+collapsible: true # make the category collapsible
+collapsed: true # keep the category open by default
+customProps:
+  description: This description can be used in the swizzled DocCard

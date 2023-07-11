@@ -45,7 +45,7 @@ return (
     <p>Every time when I'm looking for the new job. I need to recall my memory again and again. If you just write it down,
     it can easily recall your memory. You can also have better impression for what you're writing here.</p>
 
-    <p>I have a Chinese tech blog before using gatsby.js in 2018, maybe I'll migrate it later.</p>
+    <p>I have a Chinese tech blog before using gatsby.js in 2018, I wrote about 3x articles, there are more than 10 article still in 1st page for google search result. Maybe I'll migrate it later.</p>
 
     <p>If I write the blog, I'll write the article in detail. For other interview concept or leetcode, I just make a snippet or note for self reminder.</p>
 
