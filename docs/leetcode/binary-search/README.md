@@ -27,4 +27,4 @@ The benefit for this pattern.
 * Don't need to check l == r condition
 * X = mid , means at X index, the condition are met.
 
-Time complexity: For binary search O(log n) , for check function it depends.&#x20;
+Time complexity: For binary search O(log n) , for check function it depends.
