@@ -2,8 +2,5 @@ position: 5 # float position is supported
 label: 'Backtrack and DP'
 collapsible: true # make the category collapsible
 collapsed: true # keep the category open by default
-link:
-  type: generated-index
-  title: Backtrack and DP
 customProps:
   description: This description can be used in the swizzled DocCard
