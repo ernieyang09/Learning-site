@@ -15,9 +15,13 @@ The bottom-up approach (to dynamic programming) consists in first looking at the
 [ref](https://www.enjoyalgorithms.com/blog/top-down-memoization-vs-bottom-up-tabulation)
 
 
+### bitmask DP (狀態壓縮)
+
+
 
 ### Addon 
 
 - interval questions
     - the maximum number of non-overlaping intervals -> sorted by ending point
     - the minimum number of interval for the whole ranges -> sorted by start point
+    
