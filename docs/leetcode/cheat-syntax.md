@@ -20,3 +20,10 @@ keywords:
     - accumulate(arr, min)
 * permutations(arr, num)
 * combinations(arr, num)
+
+
+```python
+# list to dict
+rq = { value: key for key , value in enumerate(req_skills) }
+
+```

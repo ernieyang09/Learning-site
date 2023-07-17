@@ -1,0 +1,23 @@
+# Same Origin Policy
+
+The same-origin policy is a web browser security mechanism that aims to prevent websites from attacking each other. Under this policy a web-browser permits scripts contained in a first web-page to access data in a second web-page (or web-service), only if both web-page have the same origin (Base URL).
+
+The exception to this rule is HTML <script\> or <img\> tag , link.
+
+### JSONP (JSON with Padding)
+ 
+ JSONP is used to request data from a server residing in a different domain than the client, thereby enabling sharing of data and bypassing same-origin-policy.
+
+ In the JSONP usage pattern, the URL request pointed to by the src attribute in the <script\> element returns JSON data, with JavaScript code (usually a function call\) wrapped around it (Padded\)
+
+ - Old method , use in IE era
+ - Can't execute if in non js env
+
+
+# CORS
+
+CORS (Cross-Origin Resource Sharing) is a W3C standard and provides a mechanism to perform cross-domain request from the browser. CORS support require coordination between both the server and the client. By supporting CORS, the service provider can add a few special response headers that allow service consumer to access the data.
+
+```
+access-control-allow-origin: *
+```

@@ -15,8 +15,18 @@ The bottom-up approach (to dynamic programming) consists in first looking at the
 [ref](https://www.enjoyalgorithms.com/blog/top-down-memoization-vs-bottom-up-tabulation)
 
 
-### bitmask DP (狀態壓縮)
+### Bitmask DP (狀態壓縮)
 
+```python
+finalState = 0
+for i in range(len(condition)):
+    finalState += 1 << i
+
+# equal
+
+finalState = (1 << len(condition)) - 1
+
+```
 
 
 ### Addon 

@@ -99,6 +99,12 @@ const config = {
             position: 'left',
             label: 'FE',
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'beSidebar',
+            position: 'left',
+            label: 'BE',
+          },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/ernieyang09/interview2',
@@ -120,6 +126,10 @@ const config = {
               {
                 label: 'FE',
                 to: '/docs/fe/browser/browser-type-url',
+              },
+              {
+                label: 'BE',
+                to: '/docs/be/http-vs-https',
               },
             ],
           },
