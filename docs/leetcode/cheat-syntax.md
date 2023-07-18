@@ -10,16 +10,35 @@ keywords:
 ### bisect
 
 * bisect
-    * bisect.bisect_left(arr, target, lo=0, hi=i) # define query range
+  * bisect.bisect_left(arr, target, lo=0, hi=i) # define query range
 
 
 ### itertools
 * pairwise(p[0], p[1]), (p[1], p[2])
-    - pairwise('ABCDEFG') --> AB BC CD DE EF FG
+  - pairwise('ABCDEFG') --> AB BC CD DE EF FG
 * accumulate(arr, func) # default = add
-    - accumulate(arr, min)
+  - accumulate(arr, min)
 * permutations(arr, num)
 * combinations(arr, num)
+
+
+### Orderdict
+
+Implement by double linked list.
+
+* The regular dict was designed to be very good at mapping operations. Tracking insertion order was secondary.
+* The OrderedDict was designed to be good at reordering operations. Space efficiency, iteration speed, and the performance of update operations were secondary.
+* The OrderedDict algorithm can handle frequent reordering operations better than dict. As shown in the recipes below, this makes it suitable for implementing various kinds of **LRU caches**.
+* d[k] = d.pop(k) == od.move_to_end(k, last=True)
+* no method for od.move_to_end(k, last=False)
+
+```python
+from collections import OrderedDict
+od = OrderDict()
+od.popitem(last=True) # True = LIFO, False = FIFO
+od.move_to_end(key, last=True) # True = right, False = left
+
+```
 
 
 ```python
