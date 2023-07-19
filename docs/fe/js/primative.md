@@ -1,0 +1,38 @@
+# Primative
+
+A primitive (primitive value, primitive data type) is data that is not an object and has no methods.
+
+Primitive is immutable
+
+1. String
+2. Number
+3. Boolean
+4. Null
+5. Undefined
+6. Symbol
+7. BigInt
+
+Primitive Wrapper
+
+
+
+Object type is called by reference
+
+1. Object
+2. Function
+3. Array
+4. Set
+
+
+Check isArray
+
+```js
+function isArrayFn(obj){  // 包成函式
+  if (typeof Array.isArray === "function") { 
+    return Array.isArray(obj); // 如果瀏覽器支援就用 isArray() 方法
+  }else{  // 否則就使用 toString 方法
+    return Object.prototype.toString.call(obj) === "[object Array]"; 
+  } 
+} 
+```
+

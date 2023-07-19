@@ -1,3 +1,4 @@
+# Promise rate limiter
 
 ```js
 function limit(tasks, concurrency) {

@@ -1,23 +1,4 @@
-```javascript
-class Runner {
-    constructor(concurrent) {
-        this.queue = [];
-        this.count = 0;
-        this.concurrent = concurrent;
-    }
-    add(task) {
-        this.queue.push(task);
-        this.run();
-    }
-    run() {
-        while (this.count) {
-            this.count--;
-            this.run();
-        };
-    }
-}
-
-```
+# Rate limiter
 
 ```javascript
 class Runner{
@@ -33,19 +14,19 @@ class Runner{
       }
       run(){
          let current = this;
-         if(this.count<this.concurrency){
+         if(this.count < this.concurrency){
             this.count++;
-            if(this.waitList.length>0){
-               let task = this.waitList.shift();
-               let id = task.id;
-               this.currentQueue.push(id);
-               this.showRunningTasks();
-               let done = function(){ 
-       this.currentQueue.splice(this.currentQueue.indexOf(id),1);
-                  this.showRunningTasks();
-                  this.count = this.count - 1;
-                  this.run();
-               }.bind(current);
+            if(this.waitList.length > 0){
+                let task = this.waitList.shift();
+                let id = task.id;
+                this.currentQueue.push(id);
+                this.showRunningTasks();
+                let done = function(){ 
+                  this.currentQueue.splice(this.currentQueue.indexOf(id),1);
+                    this.showRunningTasks();
+                    this.count = this.count - 1;
+                    this.run();
+                }.bind(current);
                task.task(done);
             }
          }
@@ -106,4 +87,27 @@ runner.push(task1);
 runner.push(task2);
 runner.push(task3);
 runner.push(task4);
+```
+
+
+
+```javascript
+class Runner {
+    constructor(concurrent) {
+        this.queue = [];
+        this.count = 0;
+        this.concurrent = concurrent;
+    }
+    add(task) {
+        this.queue.push(task);
+        this.run();
+    }
+    run() {
+        while (this.count) {
+            this.count--;
+            this.run();
+        };
+    }
+}
+
 ```

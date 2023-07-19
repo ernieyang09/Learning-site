@@ -47,14 +47,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/ernieyang09/interview2/tree/main/',
+            'https://github.com/ernieyang09/learning-site/tree/main/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/ernieyang09/interview2/tree/main/',
+            'https://github.com/ernieyang09/learning-site/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -107,7 +107,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/ernieyang09/interview2',
+            href: 'https://github.com/ernieyang09/learning-site',
             label: 'GitHub',
             position: 'right',
           },
