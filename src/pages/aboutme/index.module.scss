@@ -1,0 +1,42 @@
+.icon {
+  padding: 0.5em 1em;
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+.flex {
+  display: flex;
+  gap: 24px 24px;
+  flex-direction: row;
+  
+
+  @media screen and (max-width: 768px) { 
+    flex-direction: column;
+  }
+}
+
+.avatarWrap {
+  width: 320px;
+  place-self: center;
+}
+
+.avatar {
+  background-image: url('https://avatars.githubusercontent.com/u/6268302?s=400&v=4');
+  background-position: center center;
+  background-size: cover;
+  height: 320px;
+}
+
+.contentWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0px 20px;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2em;
+}

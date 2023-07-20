@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 const organizationName = 'ernieyang09'
 const projectName = 'learning-site'
@@ -34,7 +34,7 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en']
   },
 
   presets: [
@@ -47,33 +47,35 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/ernieyang09/learning-site/tree/main/',
+            'https://github.com/ernieyang09/learning-site/tree/main/'
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/ernieyang09/learning-site/tree/main/',
+            'https://github.com/ernieyang09/learning-site/tree/main/'
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.css')
         },
         // gtag: {
         //   trackingID: 'G-JW93XB3XXZ',
         // },
         googleTagManager: {
-          containerId: 'GTM-5N2FB3B',
+          containerId: 'GTM-5N2FB3B'
         },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
           // ignorePatterns: ['/tags/**'],
-          filename: 'sitemap.xml',
-        },
-      }),
-    ],
+          filename: 'sitemap.xml'
+        }
+      })
+    ]
   ],
+
+  plugins: ['docusaurus-plugin-sass'],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -84,34 +86,34 @@ const config = {
         title: 'Learning Site',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.svg'
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'leetcodeSidebar',
             position: 'left',
-            label: 'Leetcode',
+            label: 'Leetcode'
           },
           {
             type: 'docSidebar',
             sidebarId: 'feSidebar',
             position: 'left',
-            label: 'FE',
+            label: 'FE'
           },
           {
             type: 'docSidebar',
             sidebarId: 'beSidebar',
             position: 'left',
-            label: 'BE',
+            label: 'BE'
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/ernieyang09/learning-site',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
+            href: '/aboutme',
+            label: 'About me',
+            position: 'right'
+          }
+        ]
       },
       footer: {
         style: 'dark',
@@ -121,56 +123,56 @@ const config = {
             items: [
               {
                 label: 'Leetcode',
-                to: '/docs/leetcode/binary-search',
+                to: '/docs/leetcode/binary-search'
               },
               {
                 label: 'FE',
-                to: '/docs/fe/browser/browser-type-url',
+                to: '/docs/fe/browser/browser-type-url'
               },
               {
                 label: 'BE',
-                to: '/docs/be/http-vs-https',
-              },
-            ],
+                to: '/docs/be/http-vs-https'
+              }
+            ]
           },
           {
             title: 'Community',
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                href: 'https://stackoverflow.com/questions/tagged/docusaurus'
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discordapp.com/invite/docusaurus'
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
+                href: 'https://twitter.com/docusaurus'
+              }
+            ]
           },
           {
             title: 'More',
             items: [
               {
                 label: 'Blog',
-                to: '/blog',
+                to: '/blog'
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
+                href: 'https://github.com/facebook/docusaurus'
+              }
+            ]
+          }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
       },
       prism: {
         theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
-    }),
-};
+        darkTheme: darkCodeTheme
+      }
+    })
+}
 
-module.exports = config;
+module.exports = config
