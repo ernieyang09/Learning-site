@@ -34,4 +34,32 @@ finalState = (1 << len(condition)) - 1
 - interval questions
     - the maximum number of non-overlaping intervals -> sorted by ending point
     - the minimum number of interval for the whole ranges -> sorted by start point
-    
+
+
+### Game theory
+
+minimax (877, 486)
+
+```python
+def getBestScorePlayer1(left, right):
+
+    scorePickLeft = nums[left] - getBestScorePlayer2(left+1, right)
+    scorePickRight = nums[right] - getBestScorePlayer2(left, right-1)
+
+    return max(scorePickLeft, scorePickRight)
+
+def getBestScorePlayer1(left, right):
+
+    scorePickLeft = nums[left] - getBestScorePlayer1(left+1, right)
+    scorePickRight = nums[right] - getBestScorePlayer1(left, right-1)
+    return max(scorePickLeft, scorePickRight)
+
+# if two player has same rules
+def getBestScorePlayer(left, right):
+
+    scorePickLeft = nums[left] - getBestScorePlayer(left+1, right)
+    scorePickRight = nums[right] - getBestScorePlayer(left, right-1)
+    return max(scorePickLeft, scorePickRight)
+
+```
+

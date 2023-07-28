@@ -11,8 +11,10 @@ URL is composed of 4 parts:
 * path
 * resource
 
-1. look up ip from domain name system(DNS)\
+1. look up ip from domain name system(DNS)
+
    It has cache. From browser -> OS -> local network -> ISP -> DNS server
+   
 2. After find the ip, try to establish tcp connection. (3 way handshake)
 3. Browser send the request header to server
 4. Server processes request and sends back a response
