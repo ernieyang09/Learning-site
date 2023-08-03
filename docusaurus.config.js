@@ -107,6 +107,12 @@ const config = {
             position: 'left',
             label: 'BE'
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'blockchainSidebar',
+            position: 'left',
+            label: 'Block chain'
+          },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: '/aboutme',
