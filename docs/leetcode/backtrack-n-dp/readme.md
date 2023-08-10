@@ -1,13 +1,14 @@
 # Backtrack and DP
 
 
-### DP
-
+### Backtrack
 #### Top-Down (Memoization)
 
 The top-down consists in solving the problem in a "natural manner" and check if you have calculated the solution to the subproblem before.
 
-### Bottom-up (Tabulation) DP
+### DP
+
+#### Bottom-up (Tabulation) DP
 
 The bottom-up approach (to dynamic programming) consists in first looking at the "smaller" subproblems, and then solve the larger subproblems using the solution to the smaller problems.
 
