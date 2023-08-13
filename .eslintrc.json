@@ -17,5 +17,11 @@
     ],
     "rules": {
       "react/no-unescaped-entities": 0
-    }
+    },
+    "overrides": [
+      {
+        "files": ["*.js"],  // Apply to JavaScript files
+        "extends": ["plugin:@typescript-eslint/disable-type-checked"]
+      }
+    ]
 }

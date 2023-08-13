@@ -1,0 +1,11 @@
+.menuExternalLink {
+  align-items: center;
+}
+
+.menu__link {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  font-size: 0.875em;
+}
