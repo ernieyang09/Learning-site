@@ -1,0 +1,6 @@
+
+# Bits
+
+<br/>
+
+[To be read](https://leetcode.com/discuss/interview-question/3695233/All-Types-of-Patterns-for-Bits-Manipulations-and-How-to-use-it)

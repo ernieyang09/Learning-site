@@ -28,3 +28,15 @@ The benefit for this pattern.
 * X = mid , means at X index, the condition are met.
 
 Time complexity: For binary search O(log n) , for check function it depends.
+
+
+### Insert item
+
+**Remember to use SortedList**
+
+```python
+arr.insert(val, idx)     # O(n)
+bisect.insort(arr, val)  # O(n)
+
+SortedList.add(val)      # O(log(n)) implemented with AVL tree or red black tree
+```

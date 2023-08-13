@@ -13,6 +13,34 @@ The top-down consists in solving the problem in a "natural manner" and check if 
 The bottom-up approach (to dynamic programming) consists in first looking at the "smaller" subproblems, and then solve the larger subproblems using the solution to the smaller problems.
 
 
+<br/><br/>
+
+Backtrack sometimes can prune more possibilites. But might be stack overflow.
+
+DP sometimes can reduce space complexity like O(n^2) -> O(n). But it's harder to think.
+
+<br/>
+
+```python
+
+# backtrack
+if condition:
+  res = backtrack(x + i) # only run with possible solution
+
+# dp
+
+for i in range(n):
+  # need to run for every i even you already know some of i can't be correct.
+  if condition:
+    dp[i] = dp[i - x]
+
+```
+
+<br/><br/>
+
+
+
+
 [ref](https://www.enjoyalgorithms.com/blog/top-down-memoization-vs-bottom-up-tabulation)
 
 

@@ -1,3 +1,8 @@
+---
+sidebar_position: -1
+hide_title: true
+---
+
 # Block chain
 
 Just random note here
@@ -31,4 +36,13 @@ optimize gas fee
 
 view, pure will cost gas fee if it call internally, no gas fee for call externally
 
- 
+
+### Call vs delegatecall
+
+It's like javascript (this context), so delegatecall looks this function.bind(this)
+
+[Link](https://medium.com/0xmantle/solidity-series-part-3-call-vs-delegatecall-8113b3c76855)
+
+<br/><br/><br/><br/><br/> 
+
+[Solidity by Example](https://solidity-by-example.org/)
