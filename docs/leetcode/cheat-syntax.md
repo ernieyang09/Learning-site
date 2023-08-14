@@ -46,3 +46,31 @@ od.move_to_end(key, last=True) # True = right, False = left
 rq = { value: key for key , value in enumerate(req_skills) }
 
 ```
+
+```python
+# set
+
+fruits1={"apple","banana","orange","lemon"}
+fruits2={"tomato","apple","banana"}
+
+# intersection
+fruits1.intersection(fruits2)
+fruits1 & fruits2
+# set(['apple', 'banana'])
+
+#union
+fruits1.union(fruits2)
+fruits1 | fruits2
+# set(['tomato', 'lemon', 'apple', 'orange', 'banana'])
+
+#difference
+fruits1.difference(fruits2)
+fruits1 - fruits2
+# set(['orange', 'lemon']) 
+
+#symmetric_difference
+fruits1.symmetric_difference(fruits2)
+fruits1 ^ fruits2
+# set(['tomato', 'orange', 'lemon'])
+
+```

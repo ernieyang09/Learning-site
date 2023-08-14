@@ -110,11 +110,17 @@ const config = {
           },
           {
             type: 'docSidebar',
+            sidebarId: 'designSystemSidebar',
+            position: 'left',
+            label: 'Design System'
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'blockchainSidebar',
             position: 'left',
             label: 'Block chain'
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: '/aboutme',
             label: 'About me',
@@ -143,7 +149,7 @@ const config = {
               },
               {
                 label: 'BE',
-                to: '/docs/be/http-vs-https'
+                to: '/docs/be/DB/common'
               }
             ]
           },
