@@ -1,4 +1,4 @@
-position: 5 # float position is supported
-label: 'Linked List'
+position: 0 # float position is supported
+label: 'Algorithm'
 collapsible: true # make the category collapsible
 collapsed: true # keep the category open by default
