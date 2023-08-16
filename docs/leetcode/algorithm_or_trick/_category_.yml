@@ -1,4 +1,4 @@
 position: 0 # float position is supported
-label: 'Algorithm'
+label: 'Algorithm or trick'
 collapsible: true # make the category collapsible
 collapsed: true # keep the category open by default
