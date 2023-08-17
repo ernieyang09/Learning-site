@@ -116,6 +116,12 @@ const config = {
           },
           {
             type: 'docSidebar',
+            sidebarId: 'languagesSystemSidebar',
+            position: 'left',
+            label: 'Languages'
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'blockchainSidebar',
             position: 'left',
             label: 'Block chain'
@@ -195,7 +201,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['solidity']
+        additionalLanguages: ['solidity', 'rust']
       }
     })
 }
