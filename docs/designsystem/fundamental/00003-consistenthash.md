@@ -1,0 +1,3 @@
+# Consistent Hashing
+
+The main goal of consistent hashing is to minimize the amount of data that needs to be moved or reorganized when nodes are added or removed from the system. Traditional hash functions, such as modulo hashing, can lead to significant data redistribution when the number of nodes changes. Consistent hashing addresses this issue by providing a more stable mapping of keys to nodes, reducing the amount of data that needs to be reshuffled.

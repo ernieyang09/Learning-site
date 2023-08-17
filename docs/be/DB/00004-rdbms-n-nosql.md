@@ -29,3 +29,6 @@ Cons:
 - Limited ACID transactions in some cases.
 - Learning curve for new database models.
 - Data integrity challenges based on model and configuration.
+
+
+NoSQL stores, in general, always maintain a certain number of replicas to offer reliability. Also, in such data stores, deletes don't get applied instantly; data is retained for certain days (to support undeleting) before getting removed from the system permanently.
