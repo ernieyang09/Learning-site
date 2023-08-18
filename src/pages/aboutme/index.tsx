@@ -1,12 +1,8 @@
 import React from 'react'
-import clsx from 'clsx'
-import Link from '@docusaurus/Link'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import { useColorMode } from '@docusaurus/theme-common'
 
 import * as Icons from './_components/Icons'
-
 import styles from './index.module.scss'
 
 const IconWrapper: React.FC = () => {
@@ -28,10 +24,9 @@ const IconWrapper: React.FC = () => {
 }
 
 export default function Home (): JSX.Element {
-  const { siteConfig } = useDocusaurusContext()
 
   return (
-    <Layout title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
+    <Layout title='About Ernie' description="Description will go into a meta tag in <head />">
       <div className={styles.contentWrapper}>
         <div className={styles.flex}>
           <div className={styles.avatarWrap}>
