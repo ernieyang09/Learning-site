@@ -11,6 +11,14 @@ let nums = vec![1, 2, 3, 4, 5];
 for i in 0 .. nums.len() {
 }
 
+// reverse
+for i in (1..4).rev() {
+}
+
+for val in nums {
+}
+
+
 // Create an iterator over references to the elements in the collection.  
 for (i, val) in nums.iter().enumerate() {
 
@@ -20,6 +28,7 @@ for (i, val) in nums.iter().enumerate() {
 for (i, val) in nums.into_iter().enumerate() {
     
 }
+
 ```
 
 ```rust
