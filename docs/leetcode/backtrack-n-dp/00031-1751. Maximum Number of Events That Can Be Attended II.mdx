@@ -1,0 +1,48 @@
+---
+slug: 1751-maximum-number-of-events-that-can-be-attended-ii
+hide_title: true
+keywords:
+  - leetcode
+  - backtrack
+  - dp
+  - binary search
+tags:
+  [backtrack, dp, binary search]
+---
+
+# 1751. Maximum Number of Events That Can Be Attended II
+
+[Link](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/description/)
+
+Backtrack
+
+```python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        
+        events.sort()
+
+        lens = len(events)
+
+        arr = [events[i][0] for i in range(lens)]
+
+        @cache
+        def backtrack(i, c):
+            if c == 0:
+                return 0
+            if i == lens:
+                return 0
+
+            res = 0
+
+            idx = bisect.bisect_left(arr, events[i][1] + 1)
+
+            res = max(
+                events[i][2] + backtrack(idx, c-1),
+                backtrack(i+1, c)
+            )
+
+            return res
+
+        return backtrack(0, k)
+```

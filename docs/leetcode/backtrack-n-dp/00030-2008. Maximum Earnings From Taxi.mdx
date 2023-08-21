@@ -1,0 +1,38 @@
+---
+slug: 2008-maximum-earnings-from-taxi
+hide_title: true
+keywords:
+  - leetcode
+  - dp
+tags:
+  [dp]
+---
+
+
+# 2008. Maximum Earnings From Taxi
+
+[Link](https://leetcode.com/problems/maximum-earnings-from-taxi/description/)
+
+```python
+class Solution:
+    def maxTaxiEarnings(self, n: int, rides: List[List[int]]) -> int:
+
+        dp = [0] * (n+1)
+        m = [[] for i in range(n + 5) ]
+
+
+        for [v1, v2, w] in rides:
+            m[v2].append([v1, w])
+
+
+        res = 0
+
+        for i in range(1, n + 1):
+            dp[i] = dp[i-1]
+            for [v1, w] in m[i]:
+                dp[i] = max(dp[i], dp[v1] + i - v1 + w)
+                res = max(res, dp[i])
+
+        return res
+
+```
