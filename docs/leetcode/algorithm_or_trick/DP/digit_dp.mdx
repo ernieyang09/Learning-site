@@ -1,0 +1,27 @@
+---
+title: Digit DP
+---
+
+
+Most of the time, you will have lower bound and upper bound.
+
+The good solution might be
+
+```python
+
+f(x) => answer for x
+
+ans = f(upper) - f(lower - 1)
+
+```
+
+### How to think of digit dp?
+
+define the function first, you should have at least 2 params
+
+```python
+backtrack(lens, tight)
+# lens equal to current digit
+# tight means if we need to take care of the bound limitation
+```
+
