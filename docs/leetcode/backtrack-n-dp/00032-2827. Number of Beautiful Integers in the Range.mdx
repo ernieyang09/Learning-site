@@ -5,7 +5,7 @@ keywords:
   - leetcode
   - backtrack
 tags:
-  [hard, backtrack, dp, digit dp]
+  [hard, backtrack, dp, digit dp, TBD]
 ---
 
 [Link](https://leetcode.com/problems/number-of-beautiful-integers-in-the-range/description/)
@@ -14,9 +14,60 @@ Backtrack
 
 Find the function first
 
-```python
 backtrack(lens, tight, diff, r)
-# diff => even and odd diff
-# m => modulo remaining
+
+diff => even and odd diff
+
+m => modulo remaining
+
+TBD, not so concise
+
+```python
+class Solution:
+    def numberOfBeautifulIntegers(self, low: int, high: int, k: int) -> int:
+
+        def helper(num):
+            sNum = str(num)
+
+            n = len(sNum)
+
+            res = 0
+
+            for i in range(2, n, 2):
+                for d in range(1, 10):
+                    res += backtrack(i-1, False, (-1 if d % 2 else 1),  d % k, sNum)
+
+            if n % 2 == 0:
+                D = int(sNum[0])
+                for d in range(1, D):
+                    res += backtrack(n-1, False, (-1 if d % 2 else 1),  d % k, sNum)
+                res += backtrack(n-1, True, (-1 if D % 2 else 1),  D % k, sNum)
+
+            return res
+
+        @cache
+        def backtrack(lens, tight, diff, r, num):
+            if lens == 0:
+                print(lens, diff, r)
+                if diff == 0 and r == 0:
+                    return 1
+                return 0
+            n = len(num)
+            res = 0
+            
+            if not tight:
+                for i in range(10):
+                    res += backtrack(lens-1, False, diff + (-1 if i % 2 else 1),  (r * 10 + i) % k, num)
+            else:
+                D = int(num[n-lens])
+                for i in range(D):
+                    res += backtrack(lens-1, False, diff + (-1 if i % 2 else 1),  (r * 10 + i) % k, num)
+            
+                res += backtrack(lens-1, True, diff + (-1 if D % 2 else 1),  (r * 10 + D) % k, num)
+            
+            return res
+
+
+        return helper(high) - helper(low-1)
 ```
 

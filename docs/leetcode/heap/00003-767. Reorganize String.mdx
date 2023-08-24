@@ -1,0 +1,47 @@
+---
+slug: 233-number-of-digit-one
+title: 233. Number of Digit One
+keywords:
+  - leetcode
+tags:
+  [medium, heap]
+---
+
+1. Count if any element count > (N + 1) // 2
+2. How to insert c -> get the highest count element and put it back later.
+
+```python
+class Solution:
+    def reorganizeString(self, s: str) -> str:
+
+        N = len(s)
+
+        if N == 1:
+            return s
+
+        c = Counter(s)
+
+        h = [[-v, k] for k , v in c.items()]
+        heapify(h)
+
+        if -h[0][0] > (N + 1) // 2:
+            return ''
+
+        prev = None
+        res = ''
+
+        while h:
+            v, c = heappop(h)
+
+            res = res + c
+            v += 1
+
+            if prev:
+                heappush(h, prev)
+                prev = None
+            
+            if v != 0:
+                prev = [v, c]
+
+        return res
+```
