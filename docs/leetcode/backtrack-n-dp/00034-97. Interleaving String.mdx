@@ -1,0 +1,98 @@
+---
+slug: 97-interleaving-string
+title: 97. Interleaving String
+keywords:
+  - leetcode
+tags: [Medium, backtrack, practice]
+---
+
+[Link](https://leetcode.com/problems/interleaving-string/description/)
+
+I don't need question clearly. So M + N must be O , to pass the condition.
+
+Also, we can ignore k th position for s3 which make a quite speed improvement
+
+Backtrack
+
+```python
+class Solution:
+    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
+
+        M = len(s1)
+        N = len(s2)
+        O = len(s3)
+
+        if M + N != O:
+            return False
+
+        # can pass
+        # @cache
+        # def backtrack(i, j, k):
+        #     if k == O:
+        #         return True
+        #     if i == M and j == N:
+        #         return False
+
+        #     res = any([
+        #         i < M and s1[i] == s3[k] and backtrack(i+1, j, k+1),
+        #         j < N and s2[j] == s3[k] and backtrack(i, j+1, k+1),
+        #         backtrack(i if i == M else i + 1, j if j == N else j+1, k)
+        #     ])
+
+        #     return res
+
+        # return backtrack(0, 0, 0)
+
+        @cache
+        def backtrack(i, j):
+            if i == M and j == N:
+                return True
+
+            res = any([
+                i < M and s1[i] == s3[i+j] and backtrack(i+1, j),
+                j < N and s2[j] == s3[i+j] and backtrack(i, j+1),
+            ])
+
+            return res
+
+        return backtrack(0, 0)
+```
+
+DP
+
+```python
+class Solution:
+    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
+
+        M = len(s1)
+        N = len(s2)
+        O = len(s3)
+
+        if M + N != O:
+            return False
+
+        dp = [[0] * (N + 1) for _ in range(M+1)]
+
+        s1 = '#' + s1
+        s2 = '#' + s2
+        # s3 = '#' + s3
+
+        dp[0][0] = 1
+
+        for i in range(1, M+1):
+            if s3[i-1] == s1[i]:
+                dp[i][0] = dp[i-1][0]
+
+        for j in range(1, N+1):
+            if s3[j-1] == s2[j]:
+                dp[0][j] = dp[0][j-1]
+
+        for i in range(1, M+1):
+            for j in range(1, N+1):
+                if s3[i+j-1] == s1[i]:
+                    dp[i][j] = dp[i][j] or dp[i-1][j]
+                if s3[i+j-1] == s2[j]:
+                    dp[i][j] = dp[i][j] or dp[i][j-1]
+
+        return dp[-1][-1] == 1
+```
