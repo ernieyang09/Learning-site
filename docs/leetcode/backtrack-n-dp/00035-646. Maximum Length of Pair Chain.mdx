@@ -1,0 +1,63 @@
+---
+slug: 646-maximum-length-of-pair-chain
+title: 646. Maximum Length of Pair Chain
+keywords:
+  - leetcode
+tags: [Medium, backtrack, dp, greedy, interval, recommand]
+---
+
+[Link](https://leetcode.com/problems/maximum-length-of-pair-chain/description/)
+
+Interval dp pratice
+
+Backtrack
+
+```python
+class Solution:
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
+
+        N = len(pairs)
+        pairs.sort()
+
+        start = [p[0] for p in pairs]
+
+        @cache
+        def backtrack(i):
+            if i == N:
+                return 0
+
+            idx = bisect.bisect_left(start, pairs[i][1] + 1)
+
+            res = max([
+                1 + backtrack(idx),
+                backtrack(i+1)
+            ])
+
+            return res
+
+        return backtrack(0)
+```
+
+DP
+
+```python
+class Solution:
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
+
+        N = len(pairs)
+        pairs.sort(key=lambda x:x[1])
+
+        pairs = [[-2000, -1500]] + pairs
+
+        ends = [p[1] for p in pairs]
+
+        dp = [0] * (N+1)
+
+        for i in range(1, N+1):
+            dp[i] = dp[i-1]
+
+            idx = bisect.bisect_left(ends, pairs[i][0])
+            dp[i] = max(dp[i], dp[idx-1] + 1)
+
+        return dp[-1]
+```

@@ -8,6 +8,8 @@ require('dotenv').config()
 const organizationName = 'ernieyang09'
 const projectName = 'learning-site'
 
+const { NODE_ENV } = process.env
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Learning Site',
@@ -35,7 +37,7 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en']
+    locales: ['en'],
   },
 
   presets: [
@@ -47,33 +49,31 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/ernieyang09/learning-site/tree/main/'
+          editUrl: 'https://github.com/ernieyang09/learning-site/tree/main/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/ernieyang09/learning-site/tree/main/'
+          editUrl: 'https://github.com/ernieyang09/learning-site/tree/main/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css')
+          customCss: require.resolve('./src/css/custom.css'),
         },
         // gtag: {
         //   trackingID: 'G-JW93XB3XXZ',
         // },
         googleTagManager: {
-          containerId: 'GTM-5N2FB3B'
+          containerId: 'GTM-5N2FB3B',
         },
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
           // ignorePatterns: ['/tags/**'],
-          filename: 'sitemap.xml'
-        }
-      })
-    ]
+          filename: 'sitemap.xml',
+        },
+      }),
+    ],
   ],
 
   plugins: ['docusaurus-plugin-sass'],
@@ -87,52 +87,52 @@ const config = {
         title: 'Learning Site',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg'
+          src: 'img/logo.svg',
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'leetcodeSidebar',
             position: 'left',
-            label: 'Leetcode'
+            label: 'Leetcode',
           },
           {
             type: 'docSidebar',
             sidebarId: 'feSidebar',
             position: 'left',
-            label: 'FE'
+            label: 'FE',
           },
           {
             type: 'docSidebar',
             sidebarId: 'beSidebar',
             position: 'left',
-            label: 'BE'
+            label: 'BE',
           },
           {
             type: 'docSidebar',
             sidebarId: 'designSystemSidebar',
             position: 'left',
-            label: 'Design System'
+            label: 'Design System',
           },
           {
             type: 'docSidebar',
             sidebarId: 'languagesSystemSidebar',
             position: 'left',
-            label: 'Languages'
+            label: 'Languages',
           },
           {
             type: 'docSidebar',
             sidebarId: 'blockchainSidebar',
             position: 'left',
-            label: 'Block chain'
+            label: 'Block chain',
           },
           // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: '/aboutme',
             label: 'About me',
-            position: 'right'
-          }
-        ]
+            position: 'right',
+          },
+        ],
       },
       docs: {
         sidebar: {
@@ -147,63 +147,66 @@ const config = {
             items: [
               {
                 label: 'Leetcode',
-                to: '/docs/leetcode/binary-search'
+                to: '/docs/leetcode/binary-search',
               },
               {
                 label: 'FE',
-                to: '/docs/fe/browser/browser-type-url'
+                to: '/docs/fe/browser/browser-type-url',
               },
               {
                 label: 'BE',
-                to: '/docs/be/DB/common'
-              }
-            ]
+                to: '/docs/be/DB/common',
+              },
+            ],
           },
           {
             title: 'Community',
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus'
+                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus'
+                href: 'https://discordapp.com/invite/docusaurus',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus'
-              }
-            ]
+                href: 'https://twitter.com/docusaurus',
+              },
+            ],
           },
           {
             title: 'More',
             items: [
               {
                 label: 'Blog',
-                to: '/blog'
+                to: '/blog',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus'
-              }
-            ]
-          }
+                href: 'https://github.com/facebook/docusaurus',
+              },
+            ],
+          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
-      },
-      algolia: {
-        appId: process.env.ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_API_KEY,
-        indexName: process.env.ALGOLIA_INDEX_NAME,
-        contextualSearch: true
+        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['solidity', 'rust']
-      }
-    })
+        additionalLanguages: ['solidity', 'rust'],
+      },
+    }),
+}
+
+if (NODE_ENV === 'production') {
+  config.themeConfig.algolia = {
+    appId: process.env.ALGOLIA_APP_ID,
+    apiKey: process.env.ALGOLIA_API_KEY,
+    indexName: process.env.ALGOLIA_INDEX_NAME,
+    contextualSearch: true,
+  }
 }
 
 module.exports = config
