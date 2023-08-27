@@ -1,0 +1,21 @@
+# Bloom Filter
+
+Compared to normal hashmap, it has strong space complexity(size) advantage.
+
+For N data
+
+### Normal hashmap
+
+-> N space (each key & value)
+
+### Bloom Filter
+
+function hashkey(x) = hashA(x) + hashB(x) + hashC(x) + ....
+
+write the hash into bit [0, 0, 1, 1, 0, 1, 0 , 1 , 1 ,0 ,0]
+
+when you need to get the key , exec function again and check if these bits all == 1
+
+The tradeoff is that it could lead false positive(key is not in the data but return true). Cause even though all the required bits == 1, these bits might come from different keys' hash.
+
+False positive probability can be adjusted by size of bits and numbers of hash functions.
