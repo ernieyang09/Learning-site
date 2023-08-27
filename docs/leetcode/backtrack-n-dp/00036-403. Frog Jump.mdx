@@ -1,0 +1,64 @@
+---
+slug: 403-frog-jump
+title: 403. Frog Jump
+keywords:
+  - leetcode
+tags: [Hard, backtrack, dp]
+---
+
+[Link](https://leetcode.com/problems/frog-jump/description/)
+
+Backtrack
+
+Time complexity: n(2000) \* n(2000) => O(n^2) = O(10^6)
+
+```python
+class Solution:
+    def canCross(self, stones: List[int]) -> bool:
+
+        N =len(stones)
+        M = { value: key for key , value in enumerate(stones) }
+
+        @cache
+        def backtrack(i, s):
+            if i == N - 1:
+                return True
+
+            if i > N:
+                return False
+
+            res = any([
+                s - 1 > 0 and stones[i] + s - 1 in M and backtrack(M[stones[i] + s - 1], s - 1),
+                s > 0 and stones[i] + s in M and backtrack(M[stones[i] + s], s),
+                stones[i] + s + 1 in M and backtrack(M[stones[i] + s + 1], s + 1)
+            ])
+
+            return res
+
+        return backtrack(0, 0)
+```
+
+DP
+
+```python
+class Solution:
+    def canCross(self, stones: List[int]) -> bool:
+
+        N =len(stones)
+        M = { value: key for key , value in enumerate(stones) }
+
+        dp = [[0] * N for i in range(N)]
+
+        dp[1][1] = 1 if stones[1] == 1 else 0
+
+        for i in range(2, N):
+            for j in range(1, i):
+                if stones[i] - j - 1 in M:
+                    dp[i][j+1] = dp[i][j+1] or dp[M[stones[i] - j - 1]][j]
+                if stones[i] - j in M:
+                    dp[i][j] = dp[i][j] or dp[M[stones[i] - j]][j]
+                if stones[i] - j + 1 in M:
+                    dp[i][j-1] = dp[i][j-1] or dp[M[stones[i] - j + 1]][j]
+
+        return any([j == 1 for j in dp[N-1]])
+```

@@ -1,0 +1,24 @@
+# WebRTC
+
+WebRTC(real time communication)
+
+WebRTC is p2p transaction but you don't know others at first. So all the users will connect to the **Signaling Server**. Once they know about each other, they can connect each other directly.
+
+### Signaling Server
+
+Help negotiation process. Can be implemented in any forms like http or websocket.
+
+### SDP(Session Description Protocol)
+
+SDP is a protocol that is intended to describe media communication sessions. It does not deliver the media data but is used for negotiation between peers of various audio and video codecs, network topologies, and other device information.
+
+Users will exchange their sdp through signaling server.
+
+### WebRTC vs WebSockets
+
+|               | WebRTC                     | WebSockets  |
+| ------------- | -------------------------- | ----------- |
+| Communication | P2P(need signaling server) | Need server |
+| Protocol      | UDP                        | TCP         |
+| Speed         | fast                       | low         |
+| Latency       | low                        | high        |
