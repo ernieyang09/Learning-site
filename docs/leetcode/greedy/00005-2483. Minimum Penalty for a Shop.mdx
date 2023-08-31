@@ -1,0 +1,60 @@
+---
+slug: 2483-minimum-penalty-for-a-shop
+title: 2483. Minimum Penalty for a Shop
+keywords:
+  - leetcode
+tags: [Medium, prefixsum, greedy, TBD]
+---
+
+[Link](https://leetcode.com/problems/minimum-penalty-for-a-shop/description/)
+
+For every position, count the left 0 amount and right 1 amount.
+
+Need to care about 0 indexed.
+
+Prefix sum
+
+```python
+# XYYNNY
+# 321110
+#     *
+# 000012
+class Solution:
+    def bestClosingTime(self, customers: str) -> int:
+
+        N = len(customers)
+
+        prefix0 = [0] * (N+1)
+        prefix1 = [0] * (N+1)
+
+        customers = 'X' + customers
+
+        count0 = 0
+        count1 = sum([1 if c == 'Y' else 0 for c in customers])
+
+        for i in range(N+1):
+            if customers[i] == 'Y':
+                count1 -= 1
+            if customers[i] == 'N':
+                count0 += 1
+            prefix0[i] = count0
+            prefix1[i] = count1
+
+        res = float('inf')
+        res_i = 0
+
+        for i in range(N+1):
+            if prefix0[i] + prefix1[i] < res:
+                res = prefix0[i] + prefix1[i]
+                res_i = i
+
+        return res_i
+```
+
+Greedy
+
+TBD
+
+```python
+
+```
