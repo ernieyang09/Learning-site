@@ -2,7 +2,7 @@
 
 A primitive (primitive value, primitive data type) is data that is not an object and has no methods.
 
-Primitive is immutable
+Primitive is immutable, stored by value
 
 1. String
 2. Number
@@ -14,25 +14,23 @@ Primitive is immutable
 
 Primitive Wrapper
 
-
-
-Object type is called by reference
+Object type is stored by reference(in heap memory)
 
 1. Object
 2. Function
 3. Array
 4. Set
 
-
 Check isArray
 
 ```js
-function isArrayFn(obj){  // 包成函式
-  if (typeof Array.isArray === "function") { 
-    return Array.isArray(obj); // 如果瀏覽器支援就用 isArray() 方法
-  }else{  // 否則就使用 toString 方法
-    return Object.prototype.toString.call(obj) === "[object Array]"; 
-  } 
-} 
+function isArrayFn(obj) {
+  // 包成函式
+  if (typeof Array.isArray === 'function') {
+    return Array.isArray(obj) // 如果瀏覽器支援就用 isArray() 方法
+  } else {
+    // 否則就使用 toString 方法
+    return Object.prototype.toString.call(obj) === '[object Array]'
+  }
+}
 ```
-

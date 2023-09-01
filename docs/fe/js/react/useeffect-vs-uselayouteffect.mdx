@@ -2,11 +2,14 @@
 sidebar_position: 2
 ---
 
-# useEffect vs useLayouteffect
-
+# useEffect vs useLayoutEffect
 
 useEffect is asynchronous by nature, it will not delay painting the DOM to the browser.
 
 useLayoutEffect hook is synchronous, and it will delay painting the DOM to the browser. It can be used for flicker problem.
 
 For SSR, can use useIsomorphicLayoutEffect (custom hook)
+
+When to use useLayoutEffect
+
+when you need to get the native dom attr(like dom height)
