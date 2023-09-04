@@ -1,0 +1,44 @@
+---
+title: Graph Coloring
+tags: [graph, graph coloring]
+---
+
+Make each vertex into different groups, check if they are valid
+
+Pattern
+
+```python
+# record each vertex group
+G = {}
+
+M = defauldict(list)
+
+# build the graph
+for v1, v2 in edges:
+    M[v1].append(v2)
+    M[v2].append(v1)
+
+# we need to iterate every vertex to find any collision possibility
+for i in range(N):
+    # if this vertex didn't draw color, then draw
+    if i not in G:
+        G[i] = 1
+
+    dq = deque([i])
+
+        while dq:
+            lens = len(dq)
+            for _ in range(lens):
+                idx = dq.popleft()
+
+                for ii in M[idx]:
+                    if ii not in Groups:
+                        # 1 or -1
+                        G[ii] = -G[idx]
+                        dq.append(ii)
+                    elif G[ii] == G[idx]:
+                        return False
+
+    return True
+
+```

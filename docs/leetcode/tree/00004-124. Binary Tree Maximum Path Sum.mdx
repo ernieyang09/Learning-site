@@ -1,19 +1,18 @@
 ---
 slug: 124-binary-tree-maximum-path-sum
-hide_title: true
+title: 124. Binary Tree Maximum Path Sum
 keywords:
   - leetcode
-  - tree
+tags: [Hard, tree]
 ---
 
-# 124. Binary Tree Maximum Path Sum
+[Link](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
 
-[link](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
+Start from the leaf node, just keep update the max value
 
+when propagate, should consider , left + node, right + node, node
 
-First version, idea comes from 310.
-
-Make it as graph, just start from the leaf and keep track the max res.
+But when consider the max result, also consider (left + right, node)
 
 ```python
 # Definition for a binary tree node.
@@ -36,7 +35,7 @@ class Solution:
         def dfs(node, i):
             if not node:
                 return
-        
+
             left = dfs(node.left, 2 * i + 1)
             right = dfs(node.right, 2 * i + 2)
             current = node
@@ -49,7 +48,7 @@ class Solution:
             if left:
                 self.M[2*i + 1].append(i)
                 self.indeg[i] += 1
-            
+
             if right:
                 self.M[2*i + 2].append(i)
                 self.indeg[i] += 1
@@ -106,7 +105,7 @@ Make it very simple from dfs.
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        
+
 
         self.res = float('-inf')
 

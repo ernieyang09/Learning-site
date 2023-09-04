@@ -1,0 +1,35 @@
+---
+slug: 2845-count-of-interesting-subarrays
+title: 2845. Count of Interesting Subarrays
+keywords:
+  - leetcode
+tags: [Medium, prefix, hash, practice]
+---
+
+[Link](https://leetcode.com/problems/count-of-interesting-subarrays/description/)
+
+Same as 974
+
+```python
+class Solution:
+    def countInterestingSubarrays(self, nums: List[int], modulo: int, k: int) -> int:
+
+        N = len(nums)
+        M = defaultdict(int)
+        M[0] = 1
+
+        P = [0] * N
+        res = 0
+
+        for i in range(N):
+            P[i] = P[i-1]
+            if nums[i] % modulo == k:
+                P[i] += 1
+                P[i] %= modulo
+
+            res += M[(P[i] - k) % modulo]
+
+            M[P[i]] += 1
+
+        return res
+```

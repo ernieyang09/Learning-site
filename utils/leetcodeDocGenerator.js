@@ -91,7 +91,10 @@ const main = async () => {
 
   const newIdx = (maxIdx + 1).toString().padStart(5, '00000')
 
-  fs.writeFileSync(`${folder}/${newIdx}-${replace.title}.mdx`, template(replace))
+  fs.writeFileSync(
+    `${folder}/${newIdx}-${q.frontendQuestionId}.${q.titleSlug}.mdx`,
+    template(replace),
+  )
 }
 
 try {

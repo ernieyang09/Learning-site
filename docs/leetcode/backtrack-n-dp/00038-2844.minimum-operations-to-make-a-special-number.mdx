@@ -1,0 +1,53 @@
+---
+slug: 2844-minimum-operations-to-make-a-special-number
+title: 2844. Minimum Operations to Make a Special Number
+keywords:
+  - leetcode
+tags: [Medium, interval dp, hash]
+---
+
+[Link](https://leetcode.com/problems/minimum-operations-to-make-a-special-number/description/)
+
+Backtrack
+
+```python
+class Solution:
+    def minimumOperations(self, num: str) -> int:
+
+        M = defaultdict(list)
+
+        N = len(num)
+
+        for i in range(N):
+            if num[i] in '2750':
+                M[num[i]].append(i)
+
+        res = N
+
+        if M['5']:
+            idx = bisect.bisect_left(M['2'], M['5'][-1])
+
+            if idx != 0:
+                res = min(res, N - M['2'][idx-1] - 2)
+
+            idx = bisect.bisect_left(M['7'], M['5'][-1])
+
+            if idx != 0:
+                res = min(res, N - M['7'][idx-1] - 2)
+
+        if M['0']:
+            idx1 = bisect.bisect_left(M['5'], M['0'][-1])
+            if idx1 != 0:
+                res = min(res, N - M['5'][idx1-1] - 2)
+
+            if len(M['0']) > 1:
+                res = min(res, N - M['0'][-2] - 2)
+
+
+        if res == N and M['0']:
+            return res - len(M['0'])
+
+
+        return res
+
+```

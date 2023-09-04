@@ -1,0 +1,56 @@
+---
+slug: 1326-minimum-number-of-taps-to-open-to-water-a-garden
+title: 1326. Minimum Number of Taps to Open to Water a Garden
+keywords:
+  - leetcode
+tags: [Hard, backtrack, TBD]
+---
+
+[Link](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/description/)
+
+My method keep all the interval still exists
+
+```python
+class Solution:
+    def minTaps(self, n: int, ranges: List[int]) -> int:
+
+        arr = [ [i-ranges[i], i + ranges[i]] for i in range(n + 1)]
+
+        arr.sort(key=lambda x: (x[0], -x[1]))
+
+        starts = [r[0] for r in arr]
+        arr = [[-inf, 0]] + arr
+
+        @cache
+        def backtrack(i):
+            if arr[i][1] >= n:
+                return 1
+
+            current = -inf
+            k = 0
+
+            for j in range(i + 1, n + 1):
+                if arr[j][0] <= arr[i][1]:
+                    if arr[j][1] >= current:
+                        current = arr[j][1]
+                        k = j
+
+            if current == -inf:
+                return -1
+
+            if backtrack(k) == -1:
+                return -1
+
+            return 1 + backtrack(k)
+
+        res = backtrack(0)
+
+        if res != -1:
+            res -= 1
+
+        return res
+```
+
+Arrange the interval
+
+TBD

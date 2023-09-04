@@ -1,0 +1,38 @@
+---
+slug: 141-linked-list-cycle
+title: 141. Linked List Cycle
+keywords:
+  - leetcode
+tags: [Easy, linked list, recommend]
+---
+
+[Link](https://leetcode.com/problems/linked-list-cycle/description/)
+
+use slow and fast (pointer)indicator
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+
+        slow, fast = head , head
+
+        while slow:
+
+            slow = slow.next
+
+            if fast:
+                fast = fast.next
+            if fast:
+                fast = fast.next
+
+            if slow == fast:
+                break
+
+        return slow != None
+```

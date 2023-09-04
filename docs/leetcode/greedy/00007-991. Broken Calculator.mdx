@@ -1,0 +1,30 @@
+---
+slug: 991-broken-calculator
+title: 991. Broken Calculator
+keywords:
+  - leetcode
+tags: [Medium, greedy, backtrack]
+---
+
+[Link](https://leetcode.com/problems/broken-calculator/description/)
+
+Greedy, \*2(or half) will be the better choice
+
+```python
+class Solution:
+    def brokenCalc(self, startValue: int, target: int) -> int:
+
+        if startValue >= target:
+            return startValue - target
+
+        # if target == 7, we want to find 4 not 3
+        mid = (target + 1) // 2
+
+        res = 1 + self.brokenCalc(startValue, mid)
+
+        # if target == 7 , want find 4, * 2 and deduct 1
+        if target % 2 == 1:
+            res += 1
+
+        return res
+```

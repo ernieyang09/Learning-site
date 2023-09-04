@@ -1,0 +1,42 @@
+---
+slug: 2841-maximum-sum-of-almost-unique-subarray
+title: 2841. Maximum Sum of Almost Unique Subarray
+keywords:
+  - leetcode
+tags: [Medium, slide window, hash]
+---
+
+[Link](https://leetcode.com/problems/maximum-sum-of-almost-unique-subarray/description/)
+
+Like 76
+
+```python
+class Solution:
+    def maxSum(self, nums: List[int], m: int, k: int) -> int:
+
+        N = len(nums)
+
+        M = defaultdict(int)
+        count = 0
+        current = 0
+        res = 0
+
+        for i in range(N):
+
+            M[nums[i]] += 1
+            current += nums[i]
+
+            if M[nums[i]] == 1:
+                count += 1
+
+            if i >= k:
+                current -= nums[i-k]
+                M[nums[i-k]] -= 1
+                if M[nums[i-k]] == 0:
+                    count -= 1
+
+            if count >= m:
+                res = max(res, current)
+
+        return res
+```

@@ -1,0 +1,37 @@
+---
+slug: 785-is-graph-bipartite
+title: 785. Is Graph Bipartite?
+keywords:
+  - leetcode
+tags: [Medium, graph, bfs, recommend, graph coloring]
+---
+
+[Link](https://leetcode.com/problems/is-graph-bipartite/description/)
+
+Graph coloring problem, make sure every adjacency vertex are in different group
+
+```python
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+
+        Groups = {}
+
+        for i in range(len(graph)):
+            if i not in Groups:
+                Groups[i] = 1
+            dq = deque([i])
+
+            while dq:
+                lens = len(dq)
+                for _ in range(lens):
+                    idx = dq.popleft()
+
+                    for ii in graph[idx]:
+                        if ii not in Groups:
+                            Groups[ii] = -Groups[idx]
+                            dq.append(ii)
+                        elif Groups[ii] != -Groups[idx]:
+                            return False
+
+        return True
+```

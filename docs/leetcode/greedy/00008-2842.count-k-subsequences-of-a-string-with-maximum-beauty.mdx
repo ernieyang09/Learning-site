@@ -1,0 +1,60 @@
+---
+slug: 2842-count-k-subsequences-of-a-string-with-maximum-beauty
+title: 2842. Count K-Subsequences of a String With Maximum Beauty
+keywords:
+  - leetcode
+tags: [Hard]
+---
+
+[Link](https://leetcode.com/problems/count-k-subsequences-of-a-string-with-maximum-beauty/description/)
+
+My contest version, looks quite similar to other Solution
+
+The key here is to think of "find" var
+
+```python
+'''
+bbbbbbbbbbbbbbbbbbbbbbbc
+1
+'''
+class Solution:
+    def countKSubsequencesWithMaxBeauty(self, s: str, k: int) -> int:
+        MOD = 10 ** 9 + 7
+        c = Counter(s)
+
+        if k > len(c.values()):
+            return 0
+
+        arr = [cc for cc in c.values()]
+        arr.sort()
+
+        find = arr[-k]
+
+        res = 1
+
+        while arr[-1] != find:
+            res *= arr.pop()
+            res %= MOD
+            k-= 1
+
+        count = 0
+
+        for i in range(len(arr)-1,-1,-1):
+            if arr[i] == find:
+                count += 1
+            else:
+                break
+
+        rr = 1
+        for i in range(1, k+1):
+            rr *= (count - i + 1)
+            rr //= i
+
+        res *= rr
+
+        for i in range(k):
+            res *= find
+            res %= MOD
+
+        return res
+```
