@@ -1,0 +1,39 @@
+---
+title: Binary Lifting
+tags: [tree, binary lifting, TBD]
+---
+
+Binary lifting use space to optimize time
+
+When you're tring to find LCA in the tree or path, normal case is to scan one by one. Binary lifting can jump search with 2 factor
+
+Memorise the 2^k ancestor in the space. See 1483 as the basic example.
+
+Let's say we have a N nodes tree
+
+```python
+# use + 1 for defense
+M = ceil(log2(N)) + 1
+
+levels = [[0] * M for _ in range (N)]
+
+for i in range(N):
+  levels[i][0] = parent # you should init its parent first (last level)
+
+for j in range(1, M):
+  for i in range(N):
+    # -1 means no ancestor
+    if levels[i][j-1] != -1:
+      # magic
+      levels[i][j] = levels[levels[i][j-1]][j-1]
+
+
+# find kth ancestor
+
+while k > 0 and node != -1:
+  i = int(log2(k))
+  node = levels[node][i]
+  k -= (1 << i)
+
+return node
+```

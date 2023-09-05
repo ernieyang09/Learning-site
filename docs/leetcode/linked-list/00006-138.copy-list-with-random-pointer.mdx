@@ -1,0 +1,82 @@
+---
+slug: 138-copy-list-with-random-pointer
+title: 138. Copy List with Random Pointer
+keywords:
+  - leetcode
+tags: [Medium, linked list]
+---
+
+[Link](https://leetcode.com/problems/copy-list-with-random-pointer/description/)
+
+I write it with two arr
+
+```python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+
+        if not head:
+            return None
+
+        arr_o = []
+        arr_n = []
+
+        current = head
+
+        while current:
+            arr_o.append(current)
+            arr_n.append(Node(current.val))
+            current = current.next
+
+        for i in range(len(arr_o)):
+            if i != len(arr_o) - 1:
+                arr_n[i].next = arr_n[i+1]
+            if arr_o[i].random:
+                idx = arr_o.index(arr_o[i].random)
+                arr_n[i].random = arr_n[idx]
+
+        return arr_n[0]
+```
+
+However,it seems we can use Node object as dict key
+
+> A dictionary’s keys are almost arbitrary values. Values that are not hashable, that is, values containing lists, dictionaries or other mutable types (that are compared by value rather than by object identity) may not be used as keys.
+
+```python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+
+        M = { None: None }
+
+        current = head
+
+        while current:
+            M[current] = Node(current.val)
+            current = current.next
+
+        current = head
+
+        while current:
+            M[current].next = M[current.next]
+            M[current].random = M[current.random]
+            current = current.next
+
+        return M[head]
+```

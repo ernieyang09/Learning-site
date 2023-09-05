@@ -1,0 +1,57 @@
+---
+slug: 1483-kth-ancestor-of-a-tree-node
+title: 1483. Kth Ancestor of a Tree Node
+keywords:
+  - leetcode
+tags: [Hard, LCA, binary lifting, recommend, practice]
+---
+
+[Link](https://leetcode.com/problems/kth-ancestor-of-a-tree-node/description/)
+
+```python
+class TreeNode:
+    def __init__(self, val: int):
+        self.val = val
+        self.children = []
+        self.left = None
+        self.right = None
+
+class TreeAncestor:
+
+    def __init__(self, n: int, parent: List[int]):
+        dummy = TreeNode(-1)
+        arr = []
+        # 0 index n should + 1 or just use [[-1] * (ceil(log2(n)) + 1) for i in range(n)]
+        self.levels = [[-1] * ceil(log2(n + 1)) for i in range(n)]
+
+
+        for i in range(n):
+            arr.append(TreeNode(i))
+
+        for i in range(1, n):
+            p = arr[parent[i]]
+            p.children.append(arr[i])
+
+        def dfs(node, parent, level):
+            if not node:
+                return
+
+            self.levels[node.val][0] = parent
+
+            for c in node.children:
+                dfs(c, node.val, level + 1)
+
+        dfs(arr[0], -1, 0)
+
+        for j in range(1, len(self.levels[0])):
+            for i in range(n):
+                if self.levels[i][j-1] != -1:
+                    self.levels[i][j] = self.levels[self.levels[i][j-1]][j-1]
+
+    def getKthAncestor(self, node: int, k: int) -> int:
+        while k > 0 and node != -1:
+            i = int(log2(k))
+            node = self.levels[node][i]
+            k -= (1 << i)
+        return node
+```
