@@ -1,0 +1,54 @@
+---
+slug: 725-split-linked-list-in-parts
+title: 725. Split Linked List in Parts
+keywords:
+  - leetcode
+tags: [Medium, linked list, practice]
+---
+
+[Link](https://leetcode.com/problems/split-linked-list-in-parts/description/)
+
+It's not hard, but lots of edge cases
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+
+        dq = deque()
+        current = head
+
+        while current:
+            dq.append(current)
+
+            current = current.next
+
+        reminder = len(dq) % k
+
+        d = (len(dq) - reminder) // k
+
+        res = [None for i in range(k)]
+
+        for i in range(k):
+            dummy = ListNode(-1)
+
+            current = dummy
+
+            for j in range(d):
+                current.next = dq.popleft()
+                current = current.next
+
+            if i < reminder:
+                current.next = dq.popleft()
+                current = current.next
+
+            current.next = None
+
+            res[i] = dummy.next
+
+        return res
+```
