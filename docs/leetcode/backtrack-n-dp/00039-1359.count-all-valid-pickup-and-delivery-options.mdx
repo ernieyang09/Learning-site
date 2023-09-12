@@ -1,0 +1,35 @@
+---
+slug: 1359-count-all-valid-pickup-and-delivery-options
+title: 1359. Count All Valid Pickup and Delivery Options
+keywords:
+  - leetcode
+tags: [Hard, backtrack, combination, recommend]
+---
+
+[Link](https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/description/)
+
+When select D , we can select any D from (p-d) (all unused and valid)
+
+When select P , we can select any unused P (n-p)
+
+```python
+class Solution:
+    def countOrders(self, n: int) -> int:
+
+        MOD = 10 ** 9 + 7
+
+        @cache
+        def backtrack(p, d):
+            if d > p:
+                return 0
+            if p > n or d > n:
+                return 0
+            if p == n and d == n:
+                 return 1
+
+            res = (n-p) * backtrack(p+1, d) + (p-d) * backtrack(p,d + 1)
+
+            return res % MOD
+
+        return backtrack(0, 0) % MOD
+```

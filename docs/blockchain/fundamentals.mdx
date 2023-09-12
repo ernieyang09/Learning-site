@@ -19,9 +19,24 @@ Block is consist of numbers of transactions. A transaction may refer to token tr
 
 Each block is equivalent to a single page in a bank's account ledger; it only represents a slice of the history of the network's history. It's a linked list thats point to previous block and make the data connect to each other. In order to combine these slides into a continuous whole, the blockchain makes use of hash functions. If someone wants to forge the block, they need to find a block with exact same hash value with previous block, or forge all the blocks after the current one.
 
-### connect
+### Node
 
-### Consensus Layer
+In traditional way, network services work as client-server model. servers are centralized. It will expose your personal data in certain private server and get DDOS. Decentralized networks are consist of lots of node. They are the essential part. Blockchain is more like a HTTP protocol but not a software. Every softwares(smart contract) based on blockchain need to follow the standard. When a node receive a transaction, it need to connect other nodes to boardcast this tranction, same as forward function. The goal here is to saturate all the nodes.
+
+There can be node, non-node(like query api) interaction. Also, there are full node and lite node. Full nodes need to deal with all kind of actions include storaging whole ledger. Lite node can do the block verification part.
+
+If you own 51% of network, then you can control the ledger. However, it's almost impossible to do. More attack might be phising or malware.
+
+### Block creation
+
+There's one need to collection all the data from chain and create new block. We select one node as block creator by the blockchain consensus algorithm.(can get extra rewards) It can be single point of failure. Someone can attack block creator, in this case , the block will be forfeited, then some of record will revert or disapper.
+
+### Consensus algorithm
+
+In the traditional centralized app, you only have one ledger(and backup), you trust the app so if there's any dispute, you need to negotiate with it. Since block has multiple ledger saved in different node. It needs a consensus algorithm. The job of the consensus algorithm is to ensure that control of the blockchain is decentralized so that no one user has the ability to control the network.
+
+- 51% attack
+- long range attack (create another blockchain)
 
 #### POS
 

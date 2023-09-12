@@ -1,0 +1,51 @@
+---
+slug: 1647-minimum-deletions-to-make-character-frequencies-unique
+title: 1647. Minimum Deletions to Make Character Frequencies Unique
+keywords:
+  - leetcode
+tags: [Medium, greedy]
+---
+
+[Link](https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/description/)
+
+Not a very good approach(N log N)
+
+```python
+class Solution:
+    def minDeletions(self, s: str) -> int:
+
+        C = Counter(s)
+        arr = list(C.values())
+
+        arr.sort()
+
+        idx = 1
+        res = 0
+
+        stack = []
+
+        S = set()
+
+        for v in arr:
+            while idx < v:
+                if idx not in S:
+                    stack.append(idx)
+                idx += 1
+
+            if v not in S:
+                S.add(v)
+                continue
+
+            if stack:
+                res += v - stack.pop()
+            else:
+                res += v
+
+        return res
+```
+
+O(N) TBD
+
+```python
+
+```
