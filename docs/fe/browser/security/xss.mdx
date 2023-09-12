@@ -1,0 +1,24 @@
+# XSS(Cross-site scripting)
+
+Users to inject malicious scripts into web pages that are viewed by other users. This can lead to the execution of these scripts in the context of a victim's browser, potentially allowing an attacker to steal information, impersonate users, deface websites, or perform other malicious actions.
+
+It can be triggered automatically
+
+```js
+<img src="not_exist" onerror="alert(1)">
+
+// pseudo protocol
+<iframe src=javascript:alert(1)></iframe>
+```
+
+### case
+
+when updating the password, better ask users typing current password again.
+
+If we only have an updated password column, someone can modify your password directly through xss attack.
+
+### How to prevent
+
+1. sanitization (encode, process html...)
+
+2. CSP(Content Security Policy) restrict script on allowed list
