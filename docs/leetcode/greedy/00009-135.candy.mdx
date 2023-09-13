@@ -1,0 +1,48 @@
+---
+slug: 135-candy
+title: 135. Candy
+keywords:
+  - leetcode
+tags: [Hard, greedy, TBD]
+---
+
+[Link](https://leetcode.com/problems/candy/description/)
+
+First thought, since data is 2 \* 10 ^ 4, n log n should be accepted
+
+```python
+from sortedcontainers import SortedDict
+class Solution:
+    def candy(self, ratings: List[int]) -> int:
+
+        N = len(ratings)
+
+        ratings = [0] + ratings + [0]
+
+        SD = SortedDict()
+
+        for i in range(1, N+1):
+            if ratings[i] not in SD:
+                SD[ratings[i]] = []
+
+            SD[ratings[i]].append(i)
+
+        res = [1] * (N + 2)
+
+        for ll in SD.values():
+            for i in ll:
+                if ratings[i-1] > ratings[i]:
+                    res[i-1] = max(res[i-1], res[i] + 1)
+                if ratings[i+1] > ratings[i]:
+                    res[i+1] = max(res[i+1], res[i] + 1)
+
+        return sum(res) - 2
+```
+
+O(n) method
+
+TBD
+
+```python
+
+```
