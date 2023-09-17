@@ -1,0 +1,45 @@
+---
+slug: 2861-maximum-number-of-alloys
+title: 2861. Maximum Number of Alloys
+keywords:
+  - leetcode
+tags: [Medium, binary search]
+---
+
+[Link](https://leetcode.com/problems/maximum-number-of-alloys/description/)
+
+Didn't solve it until contest ends
+
+Think of heap or greedy
+
+```python
+class Solution:
+    def maxNumberOfAlloys(self, n: int, k: int, budget: int, composition: List[List[int]], stock: List[int], cost: List[int]) -> int:
+
+        def check(i, m):
+            k = 0
+            for ii, v in enumerate(composition[i]):
+                k += max(m  * v - stock[ii], 0) * cost[ii]
+
+                if k > budget:
+                    return False
+
+            return True
+
+        def calc(i):
+            l, r = 0 , 10 ** 9
+
+            while l < r:
+                mid = r - (r-l) // 2
+                if check(i, mid):
+                    l = mid
+                else:
+                    r = mid - 1
+            return l
+
+        res = 0
+        for i in range(k):
+            res = max(res, calc(i))
+
+        return res
+```

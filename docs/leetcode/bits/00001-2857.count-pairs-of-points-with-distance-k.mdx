@@ -1,0 +1,37 @@
+---
+slug: 2857-count-pairs-of-points-with-distance-k
+title: 2857. Count Pairs of Points With Distance k
+keywords:
+  - leetcode
+tags: [Medium, bits, practice]
+---
+
+[Link](https://leetcode.com/problems/count-pairs-of-points-with-distance-k/description/)
+
+a^b = x , a = x^b
+
+dateset = 50000 and 100 , find the solution from data range
+
+split k into a and b
+
+then for each node x1, y1 , find the corresponding x2 , y2
+
+```python
+class Solution:
+    def countPairs(self, coordinates: List[List[int]], k: int) -> int:
+
+        res = 0
+
+        for i in range(k+1):
+            M = defaultdict(int)
+
+            for x1, y1 in coordinates:
+                x2 = i ^ x1
+                y2 = (k-i) ^ y1
+
+                res += M[(x2,y2)]
+
+                M[(x1,y1)] += 1
+
+        return res
+```
