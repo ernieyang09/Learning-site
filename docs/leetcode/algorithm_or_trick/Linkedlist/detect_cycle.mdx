@@ -1,0 +1,87 @@
+# Detect cycle
+
+Floyd's algorithm
+
+Can detect 1. cycle, 2. cycle entry
+
+Use fast, slow pointer, if slow meet fast , then has cycle. Move any pointer to head then move two with one step. When meet = cycle starter.
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+        slow, fast = head, head
+        cycle = False
+
+        while fast and fast.next:
+
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                cycle = True
+                break
+
+        if not cycle:
+            return None
+
+        fast = head
+
+        # while fast:
+
+        #     care about sequence here
+        #     if fast == slow:
+        #         return fast
+
+        #     fast = fast.next
+        #     slow = slow.next
+
+        # This is better
+        while slow != fast:
+            fast = fast.next
+            slow = slow.next
+
+        return slow
+```
+
+Brent's algorithm
+
+Faster than Floyd, but can only detect if there's cycle.
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+
+        slow, fast = head, head
+
+        limit = 2
+
+        current = 0
+
+        while fast and fast.next:
+
+            fast = fast.next
+            current += 1
+
+            if slow == fast:
+                return True
+
+            if current == limit:
+                current = 0
+                limit *= 2
+                slow = fast
+
+        return False
+```
