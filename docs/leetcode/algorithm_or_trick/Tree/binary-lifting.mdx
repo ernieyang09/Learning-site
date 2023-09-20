@@ -17,6 +17,12 @@ M = ceil(log2(N)) + 1
 
 levels = [[0] * M for _ in range (N)]
 
+'''
+This for loop is good for unorder vertex ( 3 -> 2 -> 5) and can be used in every scenario
+For this loop
+1. one loop to set level 0 parent
+2. for level, the for vertex (not for vertex then for level)
+'''
 for i in range(N):
   levels[i][0] = parent # you should init its parent first (last level)
 
@@ -39,3 +45,5 @@ return node
 ```
 
 [Ref](https://iq.opengenus.org/binary-lifting-k-th-ancestor-lowest-common-ancestor/)
+[Ref](https://www.youtube.com/watch?v=oib-XsjFa-M)
+[Ref](https://cp-algorithms.com/graph/lca_binary_lifting.html#implementation)

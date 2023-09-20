@@ -1,0 +1,55 @@
+---
+slug: /leetcode/2858-minimum-edge-reversals-so-every-node-is-reachable
+title: 2858. Minimum Edge Reversals So Every Node Is Reachable
+keywords:
+  - leetcode
+tags: [Hard, dfs, graph, TBD]
+---
+
+[Link](https://leetcode.com/problems/minimum-edge-reversals-so-every-node-is-reachable/description/)
+
+Reroot?
+
+```python
+class Solution:
+    def minEdgeReversals(self, n: int, edges: List[List[int]]) -> List[int]:
+
+        M = defaultdict(list)
+
+        for v1, v2 in edges:
+            M[v1].append((v2, 0))
+            M[v2].append((v1, 1))
+
+        res = [0] * n
+
+        @cache
+        def dfs(i, p):
+            rr = 0
+            for ii, v in M[i]:
+
+                if ii == p:
+                    continue
+
+                rr += dfs(ii, i) + v
+
+            return rr
+
+        @cache
+        def dfs2(i, p, count):
+            res[i] = count
+
+            for ii, v in M[i]:
+                if ii == p:
+                    continue
+
+                if v == 1:
+                    dfs2(ii, i, count - 1)
+                else:
+                    dfs2(ii, i, count + 1)
+
+        r = dfs(0, -1)
+
+        dfs2(0, -1, r)
+
+        return res
+```

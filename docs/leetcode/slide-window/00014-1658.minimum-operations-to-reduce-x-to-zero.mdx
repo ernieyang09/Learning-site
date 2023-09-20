@@ -1,0 +1,78 @@
+---
+slug: 1658-minimum-operations-to-reduce-x-to-zero
+title: 1658. Minimum Operations to Reduce X to Zero
+keywords:
+  - leetcode
+tags: [Medium, slide window, recommend]
+---
+
+[Link](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/description/)
+
+First thought
+
+Start from the left, get the max length of left. Then loop back from the right.
+
+```python
+class Solution:
+    def minOperations(self, nums: List[int], x: int) -> int:
+
+        N = len(nums)
+
+        idx = -1
+
+        current = 0
+
+        while idx + 1 < N and current + nums[idx + 1] <= x:
+            current += nums[idx + 1]
+            idx += 1
+
+        res = float('inf') if current != x else idx + 1
+        idx2 = N - 1
+
+        while idx >= -1:
+            while idx2 > idx and current + nums[idx2] <= x:
+                current += nums[idx2]
+                idx2 -= 1
+
+            if current == x:
+                res = min(res, idx + 1 + N - idx2 - 1)
+
+            current -= nums[idx]
+            idx -= 1
+
+        return -1 if res == float('inf') else res
+```
+
+Another way to think about left and right is to find the middle and use N - middle length
+
+```python
+class Solution:
+    def minOperations(self, nums: List[int], x: int) -> int:
+
+        N = len(nums)
+        find = sum(nums) - x
+
+        if find == 0:
+            return N
+        if find < 0:
+            return -1
+
+        left = 0
+        current = 0
+        res = -1
+
+        for i in range(N):
+            current += nums[i]
+
+            while current > find and left < i:
+                current -= nums[left]
+                left += 1
+            if current == find:
+                # we need to - max length of middle so that we can get minimum left + right
+                res = max(res, i - left + 1)
+
+        if res == -1:
+            return -1
+
+        return N - res
+```
