@@ -1,0 +1,88 @@
+---
+slug: /leetcode/2866-beautiful-towers-ii
+title: 2866. Beautiful Towers II
+keywords:
+  - leetcode
+tags: [Medium, monotonic stack, practice]
+---
+
+[Link](https://leetcode.com/problems/beautiful-towers-ii/description/)
+
+For the question 2865
+
+The dataset = 10^3. O(n^2) is acceptable
+
+This is for 2865
+
+```python
+class Solution:
+    def maximumSumOfHeights(self, maxHeights: List[int]) -> int:
+
+        N = len(maxHeights)
+        
+        res = 0
+
+        for i in range(N):
+
+            current_max = maxHeights[i]
+
+            left, right = 0, 0
+
+            for j in range(i-1, -1, -1):
+                if maxHeights[j] < current_max:
+                    current_max = maxHeights[j]
+                left += current_max
+
+            current_max = maxHeights[i]
+
+            for k in range(i+1, N):
+                if maxHeights[k] < current_max:
+                    current_max = maxHeights[k]
+                right += current_max
+
+            res = max(res, left + right + maxHeights[i])
+
+        return res
+```
+
+For dataset about 10^5, we should use O(n lng n) or O(n)
+
+In contest, I'm thinking about prefix or stack. I think the concept is correct.
+
+```python
+class Solution:
+    def maximumSumOfHeights(self, maxHeights: List[int]) -> int:
+        
+        N = len(maxHeights)
+        pre = [0] * N
+
+        # v, idx, s
+        stack = [(0, -1, 0)]
+
+        for i in range(N):
+
+            while stack and maxHeights[i] < stack[-1][0]:
+                stack.pop()
+
+            pre[i] = maxHeights[i] * (i - stack[-1][1]) + stack[-1][2]
+
+
+            stack.append((maxHeights[i] , i, pre[i]))
+
+        suf = [0] * N
+        stack = [(0, N, 0)]
+
+        for k in range(N-1, -1, -1):
+            while stack and maxHeights[k] < stack[-1][0]:
+                stack.pop()
+
+            suf[k] = maxHeights[k] * (stack[-1][1] - k) + stack[-1][2]
+            stack.append((maxHeights[k] , k, suf[k]))
+
+        res = 0
+
+        for i in range(N):
+            res = max(res, pre[i] + suf[i] - maxHeights[i])
+
+        return res
+```

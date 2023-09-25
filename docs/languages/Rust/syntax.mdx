@@ -33,6 +33,7 @@ let s2 = s1;
 
 println!("{}, world!", s1);
 // error, because the drop function, could be double free, so s1 will be invalid after s2 is declared by s1
+// not shallow copy or deep copy, we call it move
 
 let s1 = String::from("hello");
 let s2 = s1.clone();
@@ -52,12 +53,12 @@ fn main() {
     let s = String::from("hello");
 
     takes_ownership(s);  
-    // can't use s anymore(ownership transfer)           
+    // can't use s anymore(ownership transfer)
 
     let x = 5;                     
 
     makes_copy(x);
-    // can still use x
+    // i32 has Copy trait, can still use x
 
 }
 
