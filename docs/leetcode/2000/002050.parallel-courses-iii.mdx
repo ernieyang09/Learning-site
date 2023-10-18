@@ -1,0 +1,47 @@
+---
+slug: /leetcode/2050-parallel-courses-iii
+title: 2050. Parallel Courses III
+keywords:
+  - leetcode
+tags: [Hard, topological sort]
+---
+
+[Link](https://leetcode.com/problems/parallel-courses-iii/description/)
+
+Use an array to record time.
+
+```python
+class Solution:
+    def minimumTime(self, n: int, relations: List[List[int]], time: List[int]) -> int:
+
+        time = [0] + time
+
+        M = defaultdict(list)
+
+        indeg = [0] * (n+1)
+        pre = [0] * (n+1)
+
+        for v1, v2 in relations:
+            M[v1].append(v2)
+            indeg[v2] += 1
+
+        dq = deque([i for i in range(1, n+1) if indeg[i] == 0])
+
+        res = 0
+
+        while dq:
+
+            lens = len(dq)
+
+            for _ in range(lens):
+                v = dq.popleft()
+
+                for vv in M[v]:
+                    pre[vv] = max(pre[vv], time[v])
+                    indeg[vv] -= 1
+                    if not indeg[vv]:
+                        dq.append(vv)
+                        time[vv] += pre[vv]
+
+        return max(time)
+```

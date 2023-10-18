@@ -1,0 +1,64 @@
+---
+slug: /leetcode/1361-validate-binary-tree-nodes
+title: 1361. Validate Binary Tree Nodes
+keywords:
+  - leetcode
+tags: [Medium, tree, dfs]
+---
+
+[Link](https://leetcode.com/problems/validate-binary-tree-nodes/description/)
+
+Not sure if it's a good solution. Find root then dfs(or bfs)
+
+```python
+class Solution:
+    def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+
+        M = defaultdict(list)
+
+        indeg = [0] * n
+
+        for i in range(n):
+            if leftChild[i] != -1:
+                M[i].append(leftChild[i])
+                indeg[leftChild[i]] += 1
+                if indeg[leftChild[i]] > 1:
+                    return False
+            if rightChild[i] != -1:
+                M[i].append(rightChild[i])
+                indeg[rightChild[i]] += 1
+                if indeg[rightChild[i]] > 1:
+                    return False
+
+        start = -1
+
+        for i in range(n):
+            if indeg[i] == 0:
+                start = i
+                break
+
+        if start == -1:
+            return False
+
+        S = set()
+
+        def dfs(i):
+            if i in S:
+                return False
+
+            S.add(i)
+
+            result = True
+
+            for ii in M[i]:
+                result = result and dfs(ii)
+
+            return result
+
+        result = dfs(start)
+
+        if not result:
+            return False
+
+        return len(S) == n
+```
