@@ -1,0 +1,37 @@
+---
+slug: /leetcode/1793-maximum-score-of-a-good-subarray
+title: 1793. Maximum Score of a Good Subarray
+keywords:
+  - leetcode
+tags: [Hard, two pointer, greedy]
+---
+
+[Link](https://leetcode.com/problems/maximum-score-of-a-good-subarray/description/)
+
+```python
+class Solution:
+    def maximumScore(self, nums: List[int], k: int) -> int:
+
+        res = nums[k]
+
+        l, r = k , k
+
+        currentMin = nums[k]
+
+        while l != 0 or r != len(nums) - 1:
+
+            left = 0 if l - 1 == -1  else nums[l-1]
+
+            right = 0 if r + 1 == len(nums) else nums[r+1]
+
+            if left > right:
+                currentMin = min(currentMin, left)
+                l -= 1
+                res = max(res, currentMin * (r - l + 1))
+            else:
+                currentMin = min(currentMin, right)
+                r += 1
+                res = max(res, currentMin * (r - l + 1))
+
+        return res
+```
