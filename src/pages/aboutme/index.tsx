@@ -4,7 +4,7 @@ import Layout from '@theme/Layout'
 import { useColorMode } from '@docusaurus/theme-common'
 
 import * as Icons from './_components/Icons'
-import WorkSection from './WorkSection'
+import WorkSection from './_components/WorkSection'
 
 const IconWrapper: React.FC = () => {
   const { colorMode } = useColorMode()
