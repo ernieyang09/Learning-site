@@ -1,5 +1,5 @@
 import styles from './index.module.scss'
-import React from 'react'
+import React, { useState, useLayoutEffect, useEffect } from 'react'
 import Layout from '@theme/Layout'
 import { useColorMode } from '@docusaurus/theme-common'
 
@@ -7,7 +7,16 @@ import * as Icons from './_components/Icons'
 import WorkSection from './_components/WorkSection'
 
 const IconWrapper: React.FC = () => {
+  const [color, setColor] = useState('light')
   const { colorMode } = useColorMode()
+
+  useLayoutEffect(() => {
+    setColor(document.documentElement.getAttribute('data-theme'))
+  }, [])
+
+  useEffect(() => {
+    setColor(colorMode)
+  }, [colorMode])
 
   return (
     <div>
@@ -30,7 +39,7 @@ const IconWrapper: React.FC = () => {
         href="https://leetcode.com/ernieyang09"
         target="_blank"
         rel="noreferrer">
-        {colorMode === 'light' ? <Icons.LeetCode /> : <Icons.LeetCodeDark />}
+        {color === 'light' ? <Icons.LeetCode /> : <Icons.LeetCodeDark />}
       </a>
     </div>
   )
