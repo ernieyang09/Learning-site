@@ -36,6 +36,16 @@ html[data-theme='dark'] {
     h3 {
       margin-bottom: 0;
     }
+
+    &:hover {
+      transform: translateY(-30%);
+    }
+  }
+
+  &-content-desc {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .tag {
@@ -58,8 +68,4 @@ html[data-theme='dark'] {
       opacity: 1;
     }
   }
-}
-
-.card:hover .card-content-wrap {
-  transform: translateY(-30%);
 }

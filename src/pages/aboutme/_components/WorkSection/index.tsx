@@ -6,10 +6,10 @@ import projects from './projects'
 const WorkSection = () => {
   return (
     <div>
-      <h2>Projects.</h2>
+      <h2>Projects.(Public)</h2>
       <div className={styles['cards-wrap']}>
         {projects.map((p) => (
-          <div className={styles['card-wrap']}>
+          <div key={p.name} className={styles['card-wrap']}>
             <Card {...p} />
           </div>
         ))}

@@ -1,8 +1,17 @@
 import swagpack from '@site/static/img/swagpack.png'
 import trendorg from '@site/static/img/trendorg.jpg'
 import oring from '@site/static/img/oring.png'
+import giftcard from '@site/static/img/giftcard.png'
 
 const projects = [
+  {
+    name: 'Binance Gift Card',
+    desc: 'Share happiness using crypto gift card',
+    comment: '',
+    link: 'https://www.binance.com/en/gift-card',
+    img: giftcard,
+    tags: ['React', 'Mini Program'],
+  },
   {
     name: 'Swagpack',
     desc: 'POD e-commerce',
