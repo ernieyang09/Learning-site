@@ -1,0 +1,42 @@
+---
+slug: /leetcode/2265-count-nodes-equal-to-average-of-subtree
+title: 2265. Count Nodes Equal to Average of Subtree
+keywords:
+  - leetcode
+tags: [Medium, dfs, tree]
+---
+
+[Link](https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/description/)
+
+Get the (nodeCount, sum) from the bottom.
+
+```python
+class Solution:
+    def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
+
+        if not root:
+            return 0
+
+        self.res = 0
+
+        def dfs(node):
+            if not node:
+                return (0, 0)
+
+            left = dfs(node.left)
+            right = dfs(node.right)
+
+            s = left[1] + right[1] + node.val
+
+            avg = s // (1 + left[0] + right[0])
+
+            if avg == node.val:
+
+                self.res += 1
+
+            return (left[0] + right[0] + 1, s)
+
+        dfs(root)
+
+        return self.res
+```
