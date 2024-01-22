@@ -126,6 +126,12 @@ const config = {
             position: 'left',
             label: 'Block chain',
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'tgSidebar',
+            position: 'left',
+            label: 'Telegram & Ton',
+          },
           // { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: '/aboutme',

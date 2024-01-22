@@ -1,0 +1,39 @@
+# Cookbook
+
+Is from native telegram app
+
+```javascript
+import WebApp from '@twa-dev/sdk'
+;['android', 'android_x', 'ios'].indexOf(WebApp.platform) >= 0
+```
+
+#### Deeplink
+
+https://core.telegram.org/api/links
+
+Select users from @wallet
+
+```
+https://t.me/wallet?startattach=send-assetCurrency__&choose=users
+```
+
+Share deep link
+
+https://core.telegram.org/api/links#share-links
+
+```
+https://t.me/share/url?url={url}&text={text}
+```
+
+Start deep link
+
+https://core.telegram.org/api/links#bot-links
+
+```
+https://t.me/EXAMPLE_BOT?start=1233456771121212121212121212121
+# max length 64
+```
+
+Use server to receive webhook
+
+https://github.com/yagop/node-telegram-bot-api
