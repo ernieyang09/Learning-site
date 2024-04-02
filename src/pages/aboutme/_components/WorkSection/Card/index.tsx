@@ -25,7 +25,9 @@ const Card = ({ name, desc, comment = '', link, img, tags }) => {
           <h3>{name}</h3>
           {comment && <span className={styles['comment']}>{`(${comment})`}</span>}
         </div>
-        <div className={styles['card-content-desc']}>{desc}</div>
+        <div className={styles['card-content-desc']} title={desc}>
+          {desc}
+        </div>
         <div className={styles['tag-wrap']}>
           {tags.map((t) => (
             <Tag key={t}>{t}</Tag>

@@ -2,8 +2,17 @@ import swagpack from '@site/static/img/swagpack.png'
 import trendorg from '@site/static/img/trendorg.jpg'
 import oring from '@site/static/img/oring.png'
 import giftcard from '@site/static/img/giftcard.png'
+import TonHH from '@site/static/img/tonhackerhouse.png'
 
 const projects = [
+  {
+    name: 'TON hackerhouse',
+    desc: "The world's first TON Hacker House. Hosted by TONX and Ton foundation",
+    comment: '',
+    link: 'https://tonhackerhouse.com/',
+    img: TonHH,
+    tags: ['React', 'Next.js'],
+  },
   {
     name: 'Binance Gift Card',
     desc: 'Share happiness using crypto gift card',
